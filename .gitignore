@@ -1,0 +1,12 @@
+# Maven related resources
+*.backup
+target/
+
+# Eclipse related resources
+.project
+.classpath
+.settings/
+.factorypath
+
+# manpage generation folder
+manpages
