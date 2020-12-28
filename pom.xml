@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>jploot</groupId>
 		<artifactId>jploot-project</artifactId>
-		<version>0.1-SNAPSHOT</version>
+		<version>0.1</version>
 	</parent>
 
 	<artifactId>jploot-maven-plugin</artifactId>
