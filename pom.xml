@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>jploot</groupId>
 		<artifactId>jploot-project</artifactId>
-		<version>0.1</version>
+		<version>0.1.3</version>
 	</parent>
 
 	<artifactId>jploot-maven-plugin</artifactId>
@@ -16,6 +16,10 @@
 	<packaging>maven-plugin</packaging>
 
 	<name>Jploot Maven Plugin</name>
+
+	<properties>
+		<gitflow.versionProperty></gitflow.versionProperty>
+	</properties>
 
 	<prerequisites>
 		<maven>${maven.version}</maven>
