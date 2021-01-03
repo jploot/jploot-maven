@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -12,7 +10,7 @@
 	</parent>
 
 	<artifactId>jploot-maven-plugin</artifactId>
-	<version>0.1.1</version>
+	<version>0.2.0</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>Jploot Maven Plugin</name>
@@ -80,6 +78,7 @@
 				</configuration>
 				<executions>
 					<execution>
+						<?m2e ignore?>
 						<id>default-descriptor</id>
 						<goals>
 							<goal>descriptor</goal>
@@ -87,6 +86,7 @@
 						<phase>process-classes</phase>
 					</execution>
 					<execution>
+						<?m2e ignore?>
 						<id>help-goal</id>
 						<goals>
 							<goal>helpmojo</goal>
