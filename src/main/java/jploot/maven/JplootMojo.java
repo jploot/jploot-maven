@@ -42,6 +42,12 @@ public class JplootMojo extends AbstractMojo {
 	@Parameter(defaultValue = "${project.build.directory}/jploot/", required = true)
 	private String outputDirectory;
 
+	/**
+	 * Java Home to use to perform jlink command; use current JVM if not provided.
+	 */
+	@Parameter(required = false)
+	private String javaHome;
+
 	@Parameter(required = true)
 	private String mainClass;
 
@@ -95,6 +101,8 @@ public class JplootMojo extends AbstractMojo {
 				String message = String.format("Expected JDK %s is missing", jdk.javaHome());
 				getLog().error(message);
 				throw new MojoFailureException(message);
+			} else {
+				getLog().info(String.format("Using JAVA_HOME=%s", jdk.javaHome()));
 			}
 			
 			Path jplootHome = outputDirectoryPath.resolve("archive-root");
@@ -288,12 +296,17 @@ public class JplootMojo extends AbstractMojo {
 		return outputDirectory.resolve("jvm");
 	}
 
-	private static Jdk resolveJdk() {
-		String javaHome = System.getProperty("java.home", null);
-		if (javaHome == null) {
+	private Jdk resolveJdk() {
+		String resolvedJavaHome;
+		if (javaHome == null || javaHome.isBlank()) {
+			resolvedJavaHome = System.getProperty("java.home", null);
+		} else {
+			resolvedJavaHome = javaHome;
+		}
+		if (resolvedJavaHome == null) {
 			return new Jdk(null, false);
 		}
-		Path javaHomePath = Path.of(javaHome);
+		Path javaHomePath = Path.of(resolvedJavaHome);
 		Jdk jdk = new Jdk(javaHomePath, true);
 		if (validate(jdk.javaHome(), File::isDirectory)
 				&& validate(jdk.java(), JplootMojo::isExecutableFile)
