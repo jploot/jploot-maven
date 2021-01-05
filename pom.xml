@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>jploot-maven-plugin</artifactId>
-	<version>0.3.0</version>
+	<version>0.3.1-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>Jploot Maven Plugin</name>
